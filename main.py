@@ -3,37 +3,28 @@ import mysql.connector
 
 
 
-from __future__ import print_function
 
 hostname = 'localhost'
-username = 'username'
-password = 'password'
-database = 'dbname'
+username = 'brychxpin'
+password = '12172328'
+database = 'brychxpinNotes'
 
 # Simple routine to run a query on a database and print the results:
-def doQuery( conn ) :
-    cur = conn.cursor()
+# def doQuery( conn ) :
+#     cur = conn.cursor()
 
-    cur.execute( "SELECT fname, lname FROM employee" )
+#     cur.execute( "SELECT fname, lname FROM employee" )
 
-    for firstname, lastname in cur.fetchall() :
-        print( firstname, lastname )
+#     for firstname, lastname in cur.fetchall() :
+#         print( firstname, lastname )
 
 
-print( "Using mysqlclient (MySQLdb):" )
-import MySQLdb
-myConnection = MySQLdb.connect( host=hostname, user=username, passwd=password, db=database )
-doQuery( myConnection )
-myConnection.close()
 
 print( "Using mysql.connector:" )
-import mysql.connector
 myConnection = mysql.connector.connect( host=hostname, user=username, passwd=password, db=database )
-doQuery( myConnection )
-myConnection.close()
+if myConnection:
+    print("yes bitch")
+else:
+    print("u suck")
+    myConnection.close()
 
-print( "Using pymysql:" )
-import pymysql
-myConnection = pymysql.connect( host=hostname, user=username, passwd=password, db=database )
-doQuery( myConnection )
-myConnection.close()
